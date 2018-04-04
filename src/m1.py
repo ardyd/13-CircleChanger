@@ -383,9 +383,11 @@ class CircleChanger(object):
 
         x = self.circle.center.get_distance_from(other_circle_changer.circle.center)
         midpoint = rg.Point.halfway_to(self.circle.center, other_circle_changer.circle.center)
-        circle = rg.Circle(midpoint, x/2)
-        circle.fill_color = 'red'
-        circle.colors = self.colors + other_circle_changer.colors
+        # circle = rg.Circle(midpoint, x/2)
+        # circle.fill_color = 'red'
+        list_colors = self.colors + other_circle_changer.colors
+        circlechanger = CircleChanger(midpoint.x, midpoint.y, x/2, 'red', list_colors)
+        return circlechanger
 
     def change_color(self, index_of_color):
         """
