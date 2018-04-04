@@ -381,6 +381,12 @@ class CircleChanger(object):
         #   NO CREDIT if you use the distance formula here.
         ################################################################
 
+        x = self.circle.center.get_distance_from(other_circle_changer.circle.center)
+        midpoint = rg.Point.halfway_to(self.circle.center, other_circle_changer.circle.center)
+        circle = rg.Circle(midpoint, x/2)
+        circle.fill_color = 'red'
+        circle.colors = self.colors + other_circle_changer.colors
+
     def change_color(self, index_of_color):
         """
         What comes in:
