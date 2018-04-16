@@ -43,10 +43,11 @@ def main():
     if m1_tests.is_implemented('change_to_next_color_in_tuple'):
         run_test_change_to_next_color_in_tuple()
 
-
 ########################################################################
 # The   CircleChanger   class (and its methods) begins here.
 ########################################################################
+
+
 class CircleChanger(object):
     """
     A CircleChanger has an rg.Circle and a list of colors.
@@ -105,6 +106,8 @@ class CircleChanger(object):
         self.circle = rg.Circle(rg.Point(x, y), radius)
         self.circle.fill_color = fill_color
         self.colors = colors
+        self.original_color = fill_color
+        self.color_count = 0
 
     def __repr__(self):
         """
@@ -428,11 +431,13 @@ class CircleChanger(object):
                was constructed.
         """
         ################################################################
-        # TODO: 8.
+        # DONE: 8.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_change_to_original_color   function
         #   (below).  Third, implement and test this method.
         ################################################################
+
+        self.circle.fill_color = self.original_color
 
     def change_to_next_color_in_tuple(self):
         """
@@ -467,16 +472,21 @@ class CircleChanger(object):
         fill color have no effect on or interaction with this method.
         """
         ################################################################
-        # TODO: 9.
+        # DONE: 9.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_change_to_next_color_in_tuple
         #   function (below).  Third, implement and test this method.
         ################################################################
 
+        if self.color_count == len(self.colors):
+            self.color_count = 0
+        self.circle.fill_color = self.colors[self.color_count]
+        self.color_count += 1
 
 ########################################################################
 # The TEST functions for the  CircleChanger  class begin here.
 ########################################################################
+
 
 def run_test_init():
     """ Tests the   __init__   method of the CircleChanger class. """
